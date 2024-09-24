@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -33,9 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String hindiTransliterations = '';
 
   setHindiTransliteration() async {
-    TransliterationResponse _response =
+    TransliterationResponse? _response =
         await Transliteration.transliterate("Hello", Languages.HINDI);
-    hindiTransliterations = _response.transliterationSuggestions.toString();
+    hindiTransliterations = _response!.transliterationSuggestions.toString();
     setState(() {});
   }
 
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: Column(
@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               hindiTransliterations,
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ],
         ),
